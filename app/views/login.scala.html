@@ -1,0 +1,51 @@
+@(form: Form[Application.Login])
+
+<html>
+    <head>
+        <title>Hannong</title>
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+        <link rel="stylesheet" type="text/css" media="screen" href="@routes.Assets.at("stylesheets/login.css")">
+        <link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/style.css")">
+    </head>
+    <body>
+        
+<div id="pricipal" >
+	<div id="logo" ><img class="img" src="@routes.Assets.at("images/logo.png")"  /></div>
+	<div id="entre" >
+		<div class="entre">Bienvenue sur notre réseau wi-fi</div>
+	</div>
+	<div id="container" style='background-image:url(@routes.Assets.at("images/petite_france.jpg"));' >		
+		<div id="login">
+		
+        @helper.form(routes.Application.authenticate) {
+        <p style="margin: 0 0 10px;
+        font-size: 20px;
+        font-weight: bold;">Merci de vous authentifier</p>          
+    <!--      <h1>Merci de vous authentifier</h1>  -->              
+            @if(form.hasGlobalErrors) { 
+                <p class="error">
+                    @form.globalError.message
+                </p>
+            }
+            
+            @if(flash.contains("success")) {
+                <p class="success">
+                    @flash.get("success")
+                </p>
+            }
+            
+            <p><input type="text" name="name" placeholder="Nom d'utilisateur" value="@form("name").value"></p>
+            <p><input type="password" name="password" placeholder="Mot de passse"></p>
+            <p><button type="submit">Envoyer</button></p>            
+        }
+		</div>
+	</div>
+	<div id="footer" align="center">
+		<p>Découvrez notre blog ! <a href="http://www.blog-hannong.com/" target="_blank">www.blog-hannong.com</a></p>
+	</div>
+    </body>
+</html>
+
+    
+
+

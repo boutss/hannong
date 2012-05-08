@@ -1,0 +1,13 @@
+
+# Users
+
+users:
+
+    - !!models.User
+        name:       boutss
+        password:   mdp
+    
+    - !!models.User
+        name:       hannong
+        password:   mdp
+                        

@@ -1,0 +1,113 @@
+run
+eclipsify with-source=true
+run
+compile
+play
+run
+compile
+help
+reboot
+run
+reboot
+run
+reboot
+run
+exit
+run
+reboot
+run
+reboot
+play
+run
+exit
+*run
+play
+eclipsify with-source=true
+eclipsify --help
+eclipsify 
+help
+help eclipsify
+cd..
+exit
+run
+reboot
+run
+status
+help
+session
+session ...
+run
+debug
+play debug run
+run
+reboot
+run
+reboot
+run
+help
+reload
+!
+projects
+play
+help play
+compile
+clean
+dependencies
+help play
+console
+update
+help play
+h2-browser
+publish
+run
+update
+run
+update
+start
+update
+run
+exit
+run
+compile
+run
+exit
+help play
+clean
+reload
+run
+reboot
+run
+reboot
+run
+reboot
+run
+clean
+compile
+run
+reboot
+run
+clean
+run
+reboot
+clean
+run
+compile
+clear
+compile
+clean
+reboot
+compile
+run
+exit
+reboot
+run
+reboot
+run
+start
+run
+play
+run
+last
+run
+cd
+eclipsify with-source=true

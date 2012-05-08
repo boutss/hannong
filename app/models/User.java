@@ -1,13 +1,12 @@
 package models;
 
-import java.util.*;
+import java.util.List;
+
 import javax.persistence.*;
 
-import play.db.ebean.*;
-import play.data.format.*;
-import play.data.validation.*;
-
-import com.avaje.ebean.*;
+import play.data.format.Formats;
+import play.data.validation.Constraints;
+import play.db.ebean.Model;
 
 /**
  * User entity managed by Ebean
@@ -52,11 +51,7 @@ public class User extends Model {
             .findUnique();
     }
     
-    // --
-    
     public String toString() {
         return "User(" + name + ")";
     }
-
 }
-

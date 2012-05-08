@@ -1,31 +1,18 @@
 package controllers;
 
-import java.net.*;
-import java.sql.Connection;
 import java.util.Date;
 
-import javax.servlet.ServletRequest;
-import javax.servlet.http.HttpServletRequest;
-
-import play.mvc.Result;
-
-import play.db.DB;
-
-import play.templates.ScalaTemplateCompiler.Params;
-
-import play.*;
-import play.mvc.*;
-import play.data.*;
-
 import models.*;
-import views.html.*;
+import play.Routes;
+import play.data.Form;
+import play.mvc.*;
+import views.html.login;
 
 public class Application extends Controller {
   
     // -- Authentication
     
     public static class Login {
-        
         public String name;
         public String password;
         
@@ -54,19 +41,13 @@ public class Application extends Controller {
         if(loginForm.hasErrors()) {
             return badRequest(login.render(loginForm));
         }
-        
         session("name", loginForm.get().name);
-        
         sauvegardeInfoConnexion(loginForm);
-     
+        
         return redirect(
-            routes.Application.index()
+            routes.Hannong.index()
         );
-    }
-    
-    public static Result index() {
-      return redirect("http://www.google.fr");
-    }    
+    }   
 
     private static void sauvegardeInfoConnexion(Form<Login> loginForm) {   
       Connexion.create(new Date(), loginForm.get().name);
@@ -103,13 +84,13 @@ public class Application extends Controller {
   
     // -- Javascript routing
     
-    public static Result javascriptRoutes() {
-        response().setContentType("text/javascript");
-        return ok(
-            Routes.javascriptRouter("jsRoutes",
-                // Routes for Tasks
-                controllers.routes.javascript.Application.index()
-            )
-        );
-    }
+//    public static Result javascriptRoutes() {
+//        response().setContentType("text/javascript");
+//        return ok(
+//            Routes.javascriptRouter("jsRoutes",
+//                // Routes for Tasks
+//                controllers.routes.javascript.Application.index()
+//            )
+//        );
+//    }
 }

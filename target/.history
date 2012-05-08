@@ -111,3 +111,20 @@ last
 run
 cd
 eclipsify with-source=true
+run
+run play debug
+run debug play
+play debug run
+play
+compile
+run
+compile
+run
+reboot
+clean
+play
+run
+compile
+run
+compile
+run

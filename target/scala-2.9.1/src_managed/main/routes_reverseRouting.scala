@@ -1,6 +1,6 @@
 // @SOURCE:D:/Vincent/play-2.0/samples/java/hannong/conf/routes
-// @HASH:838b3b252da776ce18c6609f73a0b4bbd30f86d3
-// @DATE:Tue May 08 11:14:40 CEST 2012
+// @HASH:34381310d4ccf2b3b4c3088c480b5f68b54aeace
+// @DATE:Tue May 08 14:24:31 CEST 2012
 
 import play.core._
 import play.core.Router._
@@ -13,32 +13,40 @@ import Router.queryString
 
 
 // @LINE:17
-// @LINE:14
 // @LINE:11
 // @LINE:10
 // @LINE:9
 // @LINE:6
 package controllers {
 
-// @LINE:14
+// @LINE:6
+class ReverseHannong {
+    
+
+
+ 
+// @LINE:6
+def index() = {
+   Call("GET", "/")
+}
+                                                        
+
+                      
+    
+}
+                            
+
 // @LINE:11
 // @LINE:10
 // @LINE:9
-// @LINE:6
 class ReverseApplication {
     
 
 
  
-// @LINE:9
-def login() = {
-   Call("GET", "/login")
-}
-                                                        
- 
-// @LINE:14
-def javascriptRoutes() = {
-   Call("GET", "/assets/javascripts/routes")
+// @LINE:10
+def authenticate() = {
+   Call("POST", "/login")
 }
                                                         
  
@@ -48,15 +56,9 @@ def logout() = {
 }
                                                         
  
-// @LINE:6
-def index() = {
-   Call("GET", "/")
-}
-                                                        
- 
-// @LINE:10
-def authenticate() = {
-   Call("POST", "/login")
+// @LINE:9
+def login() = {
+   Call("GET", "/login")
 }
                                                         
 
@@ -86,40 +88,48 @@ def at(file:String) = {
 
 
 // @LINE:17
-// @LINE:14
 // @LINE:11
 // @LINE:10
 // @LINE:9
 // @LINE:6
 package controllers.javascript {
 
-// @LINE:14
+// @LINE:6
+class ReverseHannong {
+    
+
+
+ 
+// @LINE:6
+def index = JavascriptReverseRoute(
+   "controllers.Hannong.index",
+   """
+      function() {
+      return _wA({method:"GET", url:"/"})
+      }
+   """
+)
+                                                        
+
+                      
+    
+}
+                            
+
 // @LINE:11
 // @LINE:10
 // @LINE:9
-// @LINE:6
 class ReverseApplication {
     
 
 
  
-// @LINE:9
-def login = JavascriptReverseRoute(
-   "controllers.Application.login",
+// @LINE:10
+def authenticate = JavascriptReverseRoute(
+   "controllers.Application.authenticate",
    """
       function() {
-      return _wA({method:"GET", url:"/login"})
-      }
-   """
-)
-                                                        
- 
-// @LINE:14
-def javascriptRoutes = JavascriptReverseRoute(
-   "controllers.Application.javascriptRoutes",
-   """
-      function() {
-      return _wA({method:"GET", url:"/assets/javascripts/routes"})
+      return _wA({method:"POST", url:"/login"})
       }
    """
 )
@@ -136,23 +146,12 @@ def logout = JavascriptReverseRoute(
 )
                                                         
  
-// @LINE:6
-def index = JavascriptReverseRoute(
-   "controllers.Application.index",
+// @LINE:9
+def login = JavascriptReverseRoute(
+   "controllers.Application.login",
    """
       function() {
-      return _wA({method:"GET", url:"/"})
-      }
-   """
-)
-                                                        
- 
-// @LINE:10
-def authenticate = JavascriptReverseRoute(
-   "controllers.Application.authenticate",
-   """
-      function() {
-      return _wA({method:"POST", url:"/login"})
+      return _wA({method:"GET", url:"/login"})
       }
    """
 )
@@ -189,32 +188,40 @@ def at = JavascriptReverseRoute(
 
 
 // @LINE:17
-// @LINE:14
 // @LINE:11
 // @LINE:10
 // @LINE:9
 // @LINE:6
 package controllers.ref {
 
-// @LINE:14
+// @LINE:6
+class ReverseHannong {
+    
+
+
+ 
+// @LINE:6
+def index() = new play.api.mvc.HandlerRef(
+   controllers.Hannong.index(), HandlerDef(this, "controllers.Hannong", "index", Seq())
+)
+                              
+
+                      
+    
+}
+                            
+
 // @LINE:11
 // @LINE:10
 // @LINE:9
-// @LINE:6
 class ReverseApplication {
     
 
 
  
-// @LINE:9
-def login() = new play.api.mvc.HandlerRef(
-   controllers.Application.login(), HandlerDef(this, "controllers.Application", "login", Seq())
-)
-                              
- 
-// @LINE:14
-def javascriptRoutes() = new play.api.mvc.HandlerRef(
-   controllers.Application.javascriptRoutes(), HandlerDef(this, "controllers.Application", "javascriptRoutes", Seq())
+// @LINE:10
+def authenticate() = new play.api.mvc.HandlerRef(
+   controllers.Application.authenticate(), HandlerDef(this, "controllers.Application", "authenticate", Seq())
 )
                               
  
@@ -224,15 +231,9 @@ def logout() = new play.api.mvc.HandlerRef(
 )
                               
  
-// @LINE:6
-def index() = new play.api.mvc.HandlerRef(
-   controllers.Application.index(), HandlerDef(this, "controllers.Application", "index", Seq())
-)
-                              
- 
-// @LINE:10
-def authenticate() = new play.api.mvc.HandlerRef(
-   controllers.Application.authenticate(), HandlerDef(this, "controllers.Application", "authenticate", Seq())
+// @LINE:9
+def login() = new play.api.mvc.HandlerRef(
+   controllers.Application.login(), HandlerDef(this, "controllers.Application", "login", Seq())
 )
                               
 

@@ -18,10 +18,7 @@
 		<div id="login">
 		
         @helper.form(routes.Application.authenticate) {
-        <p style="margin: 0 0 10px;
-        font-size: 20px;
-        font-weight: bold;">Merci de vous authentifier</p>          
-    <!--      <h1>Merci de vous authentifier</h1>  -->              
+        <p style="margin: 0 0 10px; font-size: 20px;font-weight: bold;">Merci de vous authentifier</p>                      
             @if(form.hasGlobalErrors) { 
                 <p class="error">
                     @form.globalError.message

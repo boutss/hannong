@@ -7,6 +7,8 @@ import play.Routes;
 import play.data.Form;
 import play.mvc.*;
 import views.html.login;
+import java.net.*;
+import java.util.*;
 
 public class Application extends Controller {
   
@@ -50,25 +52,28 @@ public class Application extends Controller {
     }   
 
     private static void sauvegardeInfoConnexion(Form<Login> loginForm) {   
-      Connexion.create(new Date(), loginForm.get().name);
-      
-//      // Obtenir l'adresse IP de la machine locale
-//      InetAddress address;
-//      try {
-//        //String ipAddress = response().getHeaders():
-//        System.out.println(request().getHeader("referer"));
-//        address = InetAddress.getLocalHost();
-//        
-//        NetworkInterface ni = NetworkInterface.getByInetAddress(address);
-//        byte[] mac = ni.getHardwareAddress();
-//   
-//       // Afficher l'adresse Mac
-//        for (int i = 0; i < mac.length; i++) {
-//          System.out.format("%02X%s", mac[i], (i < mac.length - 1) ? "-" : "");
-//        }              
-//      } catch (Exception e) {
-//        e.printStackTrace();
-//      }
+      // Obtenir l'adresse IP de la machine locale
+      InetAddress address = null;
+	  StringBuilder adresseMac = new StringBuilder();
+      try {
+        address = InetAddress.getLocalHost();
+		System.out.println(address);
+        
+        NetworkInterface ni = NetworkInterface.getByInetAddress(address);
+        byte[] mac = ni.getHardwareAddress();
+		
+		// Send all output to the Appendable object adresseMac
+		Formatter formatter = new Formatter(adresseMac, Locale.FRANCE);
+   
+       // Afficher l'adresse Mac
+        for (int i = 0; i < mac.length; i++) {
+         formatter.format("%02X%s", mac[i], (i < mac.length - 1) ? "-" : "");
+        }              
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+	  
+	  Connexion.create(new Date(), loginForm.get().name, address != null ? address.toString() : "", adresseMac.toString());
     }
 
     /**

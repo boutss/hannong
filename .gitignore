@@ -1,3 +1,3 @@
 target
 logs
-project/target
+project/target/*

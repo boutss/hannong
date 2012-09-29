@@ -53,8 +53,10 @@ public class Application extends Controller {
 
     private static void sauvegardeInfoConnexion(Form<Login> loginForm) {   
       // Obtenir l'adresse IP de la machine locale
-      InetAddress address = null;
+    /*  InetAddress address = null;
 	  StringBuilder adresseMac = new StringBuilder();
+	  
+	  
       try {
         address = InetAddress.getLocalHost();
 		System.out.println(address);
@@ -71,9 +73,9 @@ public class Application extends Controller {
         }              
       } catch (Exception e) {
         e.printStackTrace();
-      }
+      }*/
 	  
-	  Connexion.create(new Date(), loginForm.get().name, address != null ? address.toString() : "", adresseMac.toString());
+	  Connexion.create(new Date(), loginForm.get().name, request().remoteAddress(), /*adresseMac.toString()*/ "");
     }
 
     /**
